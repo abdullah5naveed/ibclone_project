@@ -5,11 +5,18 @@ from imagebazar.models import *
 # Create your views here.
 
 def home(request):
-    return render(request, 'imagebazar/home.html')
-
-
-
-def viewimage(request):
     viewall = Images.objects.all()
-    Data = { 'images': viewall }
-    return render(request, 'imagebazar/viewimage.html', Data)
+    category = Categories.objects.all()
+    Data = { 'images': viewall, 'category':category }
+
+    return render(request, 'imagebazar/home.html', Data)
+
+
+def viewcategory(request, cid):
+
+    cate = Categories.objects.all()
+
+    viewall = Images.objects.filter(category=cid)
+
+    Data = { 'images': viewall, 'category':cate }
+    return render(request, 'imagebazar/home.html', Data)
