@@ -16,7 +16,7 @@ class Categories(models.Model):
 class Images(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=250, blank=True)
-    Images = models.ImageField(upload_to = 'imagebazar/images')
+    image = models.ImageField(upload_to ='ib/images/')
     upload_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
 
